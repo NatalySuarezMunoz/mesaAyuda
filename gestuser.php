@@ -54,7 +54,6 @@ include 'lib/head.php';
                 </article>
                 <article class="section-content">
                     <h3>Gestionar Usuario</h3>
-
                     <form>
                         <div class="search">
                             <input type="text" class="form-control" name="user" placeholder="Busque por nombre, documento, usuario" id="user" aria-describedby="sizing-addon1">
@@ -86,27 +85,6 @@ include 'lib/head.php';
                                  <?php
                                  } 
                                  ?>
-                                <!--  <tr>
-                                    <td>Brayan Villarraga</td>
-                                    <td>1023950480</td>
-                                    <td>bsvillarraga</td>
-                                    <td>bsvilalrraga@helpdesk.com</td>
-                                    <td><a><img src="img/edit-icon.png"/></a></td>
-                                  </tr>
-                                  <tr>
-                                    <td>Brayan Villarraga</td>
-                                    <td>1023950480</td>
-                                    <td>bsvillarraga</td>
-                                    <td>bsvilalrraga@helpdesk.com</td>
-                                    <td><a><img src="img/edit-icon.png"/></a></td>
-                                  </tr>
-                                  <tr>
-                                    <td>Brayan Villarraga</td>
-                                    <td>1023950480</td>
-                                    <td>bsvillarraga</td>
-                                    <td>bsvilalrraga@helpdesk.com</td>
-                                    <td><a><img src="img/edit-icon.png"/></a></td>
-                                  </tr>-->
                                 </tbody> 
                               </table>
                         </div>
