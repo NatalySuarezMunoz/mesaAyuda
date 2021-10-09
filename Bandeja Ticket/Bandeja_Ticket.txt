@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <LINK REL="stylesheet" TYPE="text/css" HREF="EstilosBandejaTicket.css">
+    <title>Bandeja Ticket</title>
+    <style>
+    h3{
+        font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                color: rgb(0, 0, 0)   
+    }
+</style>
+</head>
+<body>
+    <header>
+        <h1><img src="C:\Users\PGarzon\Clase Desarrollo Web\MicrosoftTeams-image.png" width="165" alt="Logo"></h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Tickets</a></li>
+                <li><a href="#">Perfil</a></li>
+                <li><a href="#">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1 class="TituloBandeja">Bandeja Tickets</h1>
+    <p class="SubtituloBandeja">Consulte el estado de los tickets que actualmente tiene en su bandeja</p>
+    <!-- <div id="logo">
+        <img src="https://img1.freepng.es/20180512/xgq/kisspng-computer-icons-telemarketing-5af6b3062023b1.4574503615261171261317.jpg" class="logo"/>
+    </div> -->
+    
+    <section>
+        <article>
+            <div>
+                <input class="BandejaTicketBtn" type="button" value="Bandeja Ticket >" onclick="">
+                <input class="GestionarUsuariosBtn" type="button" value="Gestionar Usuarios >" onclick="">
+                <input class="CrearTicket" type="button" value="Crear Ticket >" onclick="">     
+                <input class="CerraSesion" type="button" value="Cerrar Sesión >" onclick="">
+                          
+            </div>            
+        </article>
+        <article>
+            <div class="buscar2">
+                <article>
+                    <select class="buscar" name="buscar" id="buscar" aria-placeholder="Seleccionar Opción">
+                        <option value="">- Elija -</option>
+                        <option value="1">Número</option>
+                        <option value="2">Fecha</option>
+                        <option value="3">Estado</option>
+                    </select>
+                </article>
+
+                <article>
+                    <input type="button" class="buscar1" value="Buscar" onclick="">
+                </article>
+                
+
+            
+                <!-- <p class="SubtituloBandeja">Buscar</p> -->
+            </div>  
+        </article>
+    </section>
+
+    <table border="1">
+        <tr>
+            <th>NUMERO</th>
+            <th>FECHA</th>
+            <th>ESTADO</th>
+        </tr>
+         <tr class="fila_impar">
+            <td>1111</td>
+            <td>12/12/2020</td>
+            <td>Abierto</td>
+        </tr>
+         <tr class="fila_resaltada">
+            <td>2222</td>
+            <td>02/02/2021</td>
+            <td>Cerrado</td>
+        </tr>
+         <tr class="fila_impar">
+            <td>3333</td>
+            <td>01/04/2020</td>
+            <td>Abierto</td>
+        </tr>
+         <tr class="fila_par">
+            <td>4444</td>
+            <td>05/12/2021</td>
+            <td>Abierto</td>
+        </tr>
+    </table>
+</body>
+</html>
