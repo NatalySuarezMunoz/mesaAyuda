@@ -96,6 +96,9 @@ include 'lib/head.php';
                 </article>
             </section>
         </div>
+        <script type="text/javascript">
+           
+        </script>
 <?php
 include 'lib/footer.php';
 ?>

@@ -13,7 +13,7 @@ if (isset($_POST['ingresaruser'])){
     $cargo=$_POST['cago'];
     //echo 
     //exit;
-    echo $sql="INSERT INTO empleado (nombre,documento,IDcargo,genero) VALUES ('".$nombre."', '".$documento."', '".$cargo."', '".$genero."')";
+    $sql="INSERT INTO empleado (nombre,documento,IDcargo,genero) VALUES ('".$nombre."', '".$documento."', '".$cargo."', '".$genero."')";
     $resultado=$bd->insertar($sql);
 }
 include 'lib/head.php';
