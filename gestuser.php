@@ -52,7 +52,7 @@ include 'lib/head.php';
                         </ul>
                     </div>
                 </article>
-                <article class="section-content">
+                <article class="section-content diametro">
                     <h3>Gestionar Usuario</h3>
                     <form>
                         <div class="search">

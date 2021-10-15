@@ -120,6 +120,18 @@
     margin: 50px auto;
 }
 
+.content-template .section-flex {
+    display: flex;
+}
+
+.content-template .section-flex .article-flex-header {
+    flex: 0.5;
+}
+
+.content-template .section-flex .article-flex-body {
+    flex: 1;
+}
+
 .content-template article {
     display: inline-block;
     vertical-align: top;
@@ -181,13 +193,27 @@
 
 /*Contenido de cada menu*/
 .content-template .section-content {
-    width: 66%;
     margin-left: 100px;
     text-align: center;
 }
 
+.content-template .diametro {
+    width: 715px;
+}
+
+
 .content-template .section-content h3 {
     margin: 80px 0;
+}
+
+.content-template .section-content .titulo {
+    margin: 80px 0 0 0;
+}
+
+.content-template .section-content .subtitulo {
+    font-size: 15px;
+    font-weight: normal;
+    margin: 10px 0 80px 0;
 }
 
 .content-template .section-content .search {
@@ -243,7 +269,7 @@
 
 .vertical-line {
     margin: 0 35px 0 25px;
-    height: 60vh;
+    height: 380px;
     width: 1px;
     background: #616161;
 }
@@ -256,6 +282,10 @@
     margin-top: 5px !important;
 }
 
+.content-template .user-form .form-control-name {
+    width: 320px !important;
+}
+
 .content-template .user-form .chek {
     text-align: right;
 }
@@ -264,6 +294,42 @@
     margin-right: 20px;
 }
 
-.prueba {}
+.align-right {
+    text-align: right;
+}
 
+.details-ticket {
+    background: #E0FAFF;
+    padding: 5px 10px;
+    width: 160px;
+    border-radius: 5px;
+    border: 1px solid #B9F4FF;
+}
+
+.details-ticket-subtitle {
+    background: #E0FAFF;
+    padding: 5px;
+    width: 120px;
+    border-radius: 5px;
+    border: 1px solid #B9F4FF;
+    color: #959595;
+    margin-left: 15px;
+}
+
+.details-ticket-field {
+    background: #F3F3F3;
+    padding: 5px;
+    width: 130px;
+    border-radius: 5px;
+    border: 1px solid rgb(218, 218, 218);
+    margin-left: 5px;
+    text-align: left;
+    color: #959595;
+}
+
+.details-ticket-font {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
 
