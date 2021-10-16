@@ -10,7 +10,7 @@ if (isset($_POST['ingresaruser'])){
     $nombre=$_POST['nombre'];
     $documento=$_POST['document'];
     $genero=$_POST['genero'];
-    $cargo=$_POST['cago'];
+    $cargo=$_POST['cargo'];
     //echo 
     //exit;
     $sql="INSERT INTO empleado (nombre,documento,IDcargo,genero) VALUES ('".$nombre."', '".$documento."', '".$cargo."', '".$genero."')";
@@ -54,7 +54,7 @@ include 'lib/head.php';
                         </ul>
                     </div>
                 </article>
-                <article class="section-content">
+                <article class="section-content diametro">
                     <h3>Editar Usuario</h3>
 
                     <form>
@@ -64,28 +64,13 @@ include 'lib/head.php';
                                     <div>
                                         <section>
                                             <article>
-                                                <span>Primer Nombre</span>
-                                                <input name="nombre" type="text" class="form-control" aria-describedby="sizing-addon1" required>
-                                            </article>
-                                            <article>
-                                                <span>Segundo Nombre</span>
-                                                <input type="text" class="form-control" aria-describedby="sizing-addon1" required>
+                                                <span>Nombre</span>
+                                                <div>
+                                                    <input name="nombre" type="text" class="form-control form-control-name" aria-describedby="sizing-addon1" required>
+                                                </div>                                                
                                             </article>
                                         </section>
-                                    </div>  
-
-                                    <div>
-                                        <section>
-                                            <article>
-                                                <span>Primer Apellido</span>
-                                                <input type="text" class="form-control" aria-describedby="sizing-addon1" required>
-                                            </article>
-                                            <article>
-                                                <span>Segundo Apellido</span>
-                                                <input type="text" class="form-control" aria-describedby="sizing-addon1" required>
-                                            </article>
-                                        </section>
-                                    </div>
+                                    </div> 
 
                                     <div>
                                         <section>
@@ -108,10 +93,10 @@ include 'lib/head.php';
                                         <div><span>Cargo</span></div>
                                         
                                         <div class="form-check">
-                                        <select name="cago" class="form-control">
-                                                    <option value="1">Desarrollador</option>
-                                                    <option value="2">Analista</option>
-                                                </select>
+											<select name="cargo" class="form-control">
+												<option value="1">Desarrollador</option>
+												<option value="2">Analista</option>
+											</select>
                                         </div>
 
                                         <div class="form-check">
@@ -137,7 +122,6 @@ include 'lib/head.php';
                                     </div>
                                 </article>
 
-
                                 <div class="vertical-line"></div>
 
                                 <article>
@@ -145,11 +129,11 @@ include 'lib/head.php';
                                         <section>
                                             <article>
                                                 <span>Correo Electronico</span>
-                                                <input type="email" class="form-control" aria-describedby="sizing-addon1" required>                                            
+                                                <input name="email" type="email" class="form-control" aria-describedby="sizing-addon1" required>                                            
                                             </article>
                                             <article>
                                                 <span>Usuario</span>
-                                                <input type="text" class="form-control" aria-describedby="sizing-addon1" required>                                           
+                                                <input name="usuario" type="text" class="form-control" aria-describedby="sizing-addon1" required>                                           
                                             </article>
                                         </section>
                                     </div>  
@@ -158,18 +142,17 @@ include 'lib/head.php';
                                         <section>
                                             <article>
                                                 <span>Password</span>
-                                                <input type="password" class="form-control" aria-describedby="sizing-addon1" required>                                             
+                                                <input name="password" type="password" class="form-control" aria-describedby="sizing-addon1" required>                                             
                                             </article>
                                             <article>
                                                 <span>Confirmar Password</span>
-                                                <input type="password" class="form-control" aria-describedby="sizing-addon1" required>                                              
+                                                <input name="confirm_password" type="password" class="form-control" aria-describedby="sizing-addon1" required>                                              
                                             </article>
                                         </section>
                                     </div>
-
                                  
                                     <div class="chek">
-                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <input name="admin" type="checkbox" class="form-check-input" id="exampleCheck1">
                                         <label class="form-check-label" for="exampleCheck1">¿Es un usuario administrador?</label>
                                     </div>  
                                 </article>
