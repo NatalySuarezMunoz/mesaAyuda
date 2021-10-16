@@ -2,15 +2,15 @@
 error_reporting(E_ALL);
 ini_set('display_errors',1);
 
-include 'bd/bd.php';
-$bd=new bd();
+// include 'bd/bd.php';
+// $bd=new bd();
 
-$sql="SELECT * FROM empleado";
-$resultado=$bd->consultar($sql);  
-$usuarios=array();
-while ($fila=$resultado->fetch_array(MYSQLI_ASSOC)) {
-    array_push($usuarios,$fila);
-}
+// $sql="SELECT * FROM empleado";
+// $resultado=$bd->consultar($sql);  
+// $usuarios=array();
+// while ($fila=$resultado->fetch_array(MYSQLI_ASSOC)) {
+//     array_push($usuarios,$fila);
+// }
 /* echo '<pre>'; como imprimir un arreglo 
 print_r($usuarios);
 echo '</pre>'; */
@@ -56,8 +56,8 @@ include 'lib/head.php';
                     <h3>Gestionar Usuario</h3>
                     <form>
                         <div class="search">
-                            <input type="text" class="form-control" name="user" placeholder="Busque por nombre, documento, usuario" id="user" aria-describedby="sizing-addon1">
-                            <button class="btn-gris" type="submit">Buscar</button>                                              
+                            <input type="text" class="form-control" name="user" id="search" placeholder="Busque por nombre, documento, usuario" id="user" aria-describedby="sizing-addon1">
+                            <!-- <button class="btn-gris" type="submit">Buscar</button>                                               -->
                         </div>
                         
                         <div>
@@ -71,20 +71,8 @@ include 'lib/head.php';
                                     <th scope="col">Gestionar</th>
                                   </tr>
                                 </thead>
-                                 <tbody>
-                                 <?php
-                                    foreach($usuarios as $usuario){
-                                 ?>
-                                 <tr>
-                                     <td><?php echo $usuario['IDempleado']?></td>
-                                     <td><?php echo $usuario['nombre']?></td>
-                                     <td><?php echo $usuario['documento']?></td>
-                                     <td><?php echo $usuario['IDcargo']?></td>
-                                     <td><?php echo $usuario['genero']?></td>
-                                 </tr>
-                                 <?php
-                                 } 
-                                 ?>
+                                 <tbody id="viewlist">
+
                                 </tbody> 
                               </table>
                         </div>
@@ -97,7 +85,25 @@ include 'lib/head.php';
             </section>
         </div>
         <script type="text/javascript">
-           
+           $(document).ready(function(){
+               lista('');
+               $("#search").keyup(function(){
+                   let letra=$(this).val();
+                   if(letra.length>4){
+                    lista(letra);
+                   }
+               });
+           });
+           function lista(nombre){
+               $.ajax({
+                   method: "post",
+                   url: "ajax/lista.php",
+                   data: {"nombreAjax":nombre},
+                   success: function(value){
+                    $("#viewlist").html(value);
+                   }
+               })
+           }
         </script>
 <?php
 include 'lib/footer.php';
