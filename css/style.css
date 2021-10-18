@@ -298,7 +298,7 @@
     text-align: right;
 }
 
-.details-ticket {
+.header-details-ticket .details-ticket {
     background: #E0FAFF;
     padding: 5px 10px;
     width: 160px;
@@ -306,7 +306,7 @@
     border: 1px solid #B9F4FF;
 }
 
-.details-ticket-subtitle {
+.header-details-ticket .details-ticket-subtitle {
     background: #E0FAFF;
     padding: 5px;
     width: 120px;
@@ -316,7 +316,7 @@
     margin-left: 15px;
 }
 
-.details-ticket-field {
+.header-details-ticket .details-ticket-field {
     background: #F3F3F3;
     padding: 5px;
     width: 130px;
@@ -324,12 +324,72 @@
     border: 1px solid rgb(218, 218, 218);
     margin-left: 5px;
     text-align: left;
-    color: #959595;
+    color: #000;
 }
 
-.details-ticket-font {
+.header-details-ticket .details-ticket-font {
     font-size: 16px;
     font-weight: bold;
     text-align: center;
 }
 
+.body-details-ticket section {
+    margin-bottom: 5px !important;
+}
+
+.body-details-ticket .display-inline {
+    display: inline-block !important;
+}
+
+.body-details-ticket .details-ticket-subtitle {
+    background: #E0FAFF;
+    padding: 5px;
+    width: 100px;
+    border-radius: 5px;
+    border: 1px solid #B9F4FF;
+    color: #959595;
+    text-align: right;
+}
+
+.body-details-ticket .details-ticket-field {
+    background: #F3F3F3;
+    padding: 5px;
+    width: 240px;
+    border-radius: 5px;
+    border: 1px solid rgb(218, 218, 218);
+    text-align: left;
+    color: #000;
+}
+
+.body-details-ticket .time-ticket .details-ticket-subtitle {
+    width: 60px;
+}
+
+.body-details-ticket .time-ticket .details-ticket-field {
+    width: 100px;
+}
+
+textarea {
+    width: 100%;    
+}
+
+.tab-content {
+    margin-top: 15px;    
+}
+
+.center-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.center-button button {
+    margin: 5px;
+}
+
+.tab-content article {
+    vertical-align: baseline !important;
+}
+
+.input-file {
+    margin-top: 10px;
+}
