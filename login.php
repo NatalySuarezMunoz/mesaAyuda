@@ -25,7 +25,7 @@
                         </div>
                         
                         <div>
-                            <form>
+                            <form method="POST">
                                 <div class="input-group input-group-lg">
                                     <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-user"></i></span>
                                     <input type="email" class="form-control" name="user" placeholder="user" id="user" aria-describedby="sizing-addon1" required>
@@ -38,7 +38,7 @@
 
                                 <br>
 
-                                <button class="btn-gris" type="submit">Entrar</button>
+                                <button class="btn-gris" type="submit" onclick="pageRedirect();">Entrar</button>
                             </form>
                         </div>
                     </div>
@@ -47,4 +47,10 @@
         </div>
         
     </body>
+
+    <script type="text/javascript">
+        function pageRedirect() {
+            window.location.href = "index.php";
+        }
+    </script>
 </html>

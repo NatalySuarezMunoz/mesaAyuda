@@ -1,46 +1,6 @@
-<?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-include 'lib/head.php';
-?>
-<div class="content-template">
+<div>
     <section>
-        <article>
-            <div>
-                <img class="logo" src="img/logo_login.png" />
-            </div>
-
-            <div class="menu">
-                <ul>
-                    <li>
-                        <a>
-                            <div>
-                                <span>Bandeja Ticket</span>
-                                <i class="arrow right"></i>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <div>
-                                <span>Gestionar Usuarios</span>
-                                <i class="arrow right"></i>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <div>
-                                <span>Cerrar Sesión</span>
-                                <i class="arrow right"></i>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </article>
-        <article class="section-content diametro">
+        <article class="section-content-page diametro">
             <div id="gestuser">
                 <h3>Gestionar Usuario</h3>
                 <form>
@@ -112,12 +72,13 @@ include 'lib/head.php';
             },
             success: function(data) {
                 $("#content").html(data)
-                $("#gestuser").hide();
             }
         })
     }
 
-    function newUser() {
+    function newUser() {   
+        
+        
         $.ajax({
             method: "post",
             url: "form-user.php",
@@ -126,16 +87,7 @@ include 'lib/head.php';
             },
             success: function(data) {
                 $("#content").html(data)
-                $("#gestuser").hide();
             }
         })
     }
-
-    function cancelar() {
-        $("#content").hide();
-        $("#gestuser").show();
-    }
 </script>
-<?php
-include 'lib/footer.php';
-?>

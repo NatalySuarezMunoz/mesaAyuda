@@ -1,0 +1,28 @@
+[26-Oct-2021 23:50:38 UTC] PHP Warning:  mysqli::__construct(): (HY000/2002): No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\inetpub\wwwroot\helpdesk\bd\bd.php on line 11
+[26-Oct-2021 23:50:38 UTC] PHP Warning:  Undefined property: bd::$conectar in C:\inetpub\wwwroot\helpdesk\bd\bd.php on line 23
+[26-Oct-2021 23:50:38 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\inetpub\wwwroot\helpdesk\bd\bd.php:23
+Stack trace:
+#0 C:\inetpub\wwwroot\helpdesk\ajax\lista.php(25): bd->consultar('    SELECT DIST...')
+#1 {main}
+  thrown in C:\inetpub\wwwroot\helpdesk\bd\bd.php on line 23
+[26-Oct-2021 23:50:40 UTC] PHP Warning:  mysqli::__construct(): (HY000/2002): No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\inetpub\wwwroot\helpdesk\bd\bd.php on line 11
+[26-Oct-2021 23:50:40 UTC] PHP Warning:  Undefined property: bd::$conectar in C:\inetpub\wwwroot\helpdesk\bd\bd.php on line 23
+[26-Oct-2021 23:50:40 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\inetpub\wwwroot\helpdesk\bd\bd.php:23
+Stack trace:
+#0 C:\inetpub\wwwroot\helpdesk\ajax\lista.php(25): bd->consultar('    SELECT DIST...')
+#1 {main}
+  thrown in C:\inetpub\wwwroot\helpdesk\bd\bd.php on line 23
+[26-Oct-2021 23:50:41 UTC] PHP Warning:  mysqli::__construct(): (HY000/2002): No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\inetpub\wwwroot\helpdesk\bd\bd.php on line 11
+[26-Oct-2021 23:50:41 UTC] PHP Warning:  Undefined property: bd::$conectar in C:\inetpub\wwwroot\helpdesk\bd\bd.php on line 23
+[26-Oct-2021 23:50:41 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\inetpub\wwwroot\helpdesk\bd\bd.php:23
+Stack trace:
+#0 C:\inetpub\wwwroot\helpdesk\ajax\lista.php(25): bd->consultar('    SELECT DIST...')
+#1 {main}
+  thrown in C:\inetpub\wwwroot\helpdesk\bd\bd.php on line 23
+[26-Oct-2021 23:50:43 UTC] PHP Warning:  mysqli::__construct(): (HY000/2002): No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\inetpub\wwwroot\helpdesk\bd\bd.php on line 11
+[26-Oct-2021 23:50:43 UTC] PHP Warning:  Undefined property: bd::$conectar in C:\inetpub\wwwroot\helpdesk\bd\bd.php on line 23
+[26-Oct-2021 23:50:43 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\inetpub\wwwroot\helpdesk\bd\bd.php:23
+Stack trace:
+#0 C:\inetpub\wwwroot\helpdesk\ajax\lista.php(25): bd->consultar('    SELECT DIST...')
+#1 {main}
+  thrown in C:\inetpub\wwwroot\helpdesk\bd\bd.php on line 23
