@@ -1,3 +1,29 @@
+<?php
+session_start();
+error_reporting(E_ALL);
+ini_set('display_errors',1);
+echo $_SESSION['nombre'];
+ include 'bd/bd.php';
+ $bd=new bd();
+
+$sql='SELECT * FROM importancia order by importancia' ;
+$resultado=$bd->consultar($sql);  
+$importancias=array();
+while ($fila=$resultado->fetch_array(MYSQLI_ASSOC)) {
+ array_push($importancias,$fila);
+}
+
+$sql='SELECT * FROM tipoticket order by tipoticket' ;
+$resultado=$bd->consultar($sql);  
+$tipos=array();
+while ($fila=$resultado->fetch_array(MYSQLI_ASSOC)) {
+ array_push($tipos,$fila);
+}
+$fechaInicio = date("Y-m-d H:i:s");
+
+//include 'lib/head.php';
+?>
+<form action="" method="post" name="formulario" id="formulario">
 <div>
     <section class="section-flex">
         <article class="section-content-page diametro">
@@ -7,7 +33,6 @@
                 <section>
                     <article>
                         <div class="body-details-ticket">
-                            <form>
                                 <div>
                                     <section>
                                         <article>
@@ -18,20 +43,7 @@
                                                     </div>
                                                 </article>
                                                 <article>
-                                                    <input type="date" name="fechaini" class="edit-ticket-field">
-                                                </article>
-                                            </section>
-                                        </article>
-
-                                        <article class="align-right">
-                                            <section class="display-inline">
-                                                <article>
-                                                    <div class="details-ticket-subtitle">
-                                                        <span>Fecha vence</span>
-                                                    </div>
-                                                </article>
-                                                <article>
-                                                    <input type="date" name="fechavence" class="edit-ticket-field">
+                                                    <input type="text" value="<?php echo $fechaInicio?>" name="fechaini" class="edit-ticket-field" id="fechainicio" required>
                                                 </article>
                                             </section>
                                         </article>
@@ -44,130 +56,37 @@
                                             <section class="display-inline">
                                                 <article>
                                                     <div class="details-ticket-subtitle">
-                                                        <span>Nombre</span>
+                                                        <span>Titulo</span>
                                                     </div>
                                                 </article>
                                                 <article>
-                                                    <input type="text" name="nombre" class="edit-ticket-field">
-                                                </article>
-                                            </section>
-                                        </article>
-
-                                        <article class="align-right">
-                                            <section class="display-inline">
-                                                <article>
-                                                    <div class="details-ticket-subtitle">
-                                                        <span>Sucursal</span>
-                                                    </div>
-                                                </article>
-                                                <article>
-                                                    <input type="text" name="sucursal" class="edit-ticket-field">
+                                                    <input type="text" name="titulo" class="edit-ticket-field" id="titulo" required>
                                                 </article>
                                             </section>
                                         </article>
                                     </section>
                                 </div>
-
-                                <div>
-                                    <section>
-                                        <article>
-                                            <section class="display-inline">
-                                                <article>
-                                                    <div class="details-ticket-subtitle">
-                                                        <span>Documento</span>
-                                                    </div>
-                                                </article>
-                                                <article>
-                                                    <input type="number" name="documento" class="edit-ticket-field">
-                                                </article>
-                                            </section>
-                                        </article>
-
-                                        <article class="align-right">
-                                            <section>
-                                                <article>
-                                                    <section class="display-inline time-ticket">
-                                                        <article>
-                                                            <div class="details-ticket-subtitle">
-                                                                <span>Teléfono</span>
-                                                            </div>
-                                                        </article>
-                                                        <article>
-                                                            <input type="number" name="telefono" class="edit-ticket-field-additional">
-                                                        </article>
-                                                    </section>
-                                                </article>
-                                                <article>
-                                                    <section class="display-inline time-ticket">
-                                                        <article>
-                                                            <div class="details-ticket-subtitle">
-                                                                <span>Limite</span>
-                                                            </div>
-                                                        </article>
-                                                        <article>
-                                                            <input type="text" name="limite" class="edit-ticket-field-additional">
-                                                        </article>
-                                                    </section>
-                                                </article>
-                                            </section>
-                                        </article>
-                                    </section>
-                                </div>
-
-                                <div>
-                                    <section>
-                                        <article>
-                                            <section class="display-inline">
-                                                <article>
-                                                    <div class="details-ticket-subtitle">
-                                                        <span>Correo</span>
-                                                    </div>
-                                                </article>
-                                                <article>
-                                                    <input type="email" name="email" class="edit-ticket-field">
-                                                </article>
-                                            </section>
-                                        </article>
-
-                                        <article class="align-right">
-                                            <section>
-                                                <article>
-                                                    <section class="display-inline">
-                                                        <article>
-                                                            <div class="details-ticket-subtitle">
-                                                                <span>Direcci&oacute;n</span>
-                                                            </div>
-                                                        </article>
-                                                        <article>
-                                                            <input type="text" name="direccion" class="edit-ticket-field">
-                                                        </article>
-                                                    </section>
-                                                </article>
-                                            </section>
-                                        </article>
-                                    </section>
-                                </div>
-
                                 <div class="ddlselection">
                                     <section>
                                         <article>
                                             <section class="display-inline">
                                                 <article>
                                                     <div class="details-ticket-subtitle">
-                                                        <span>Urgencia</span>
+                                                        <span>Importancia</span>
                                                     </div>
                                                 </article>
-                                                <article>
-                                                    <select id="ddlurgencia" class="select-style">
-                                                        <option value="seleccione">-- Seleccione --</option>
-                                                        <option value="alta">Alta</option>
-                                                        <option value="media">Media</option>
-                                                        <option value="baja">Baja</option>
+                                                <div class="form-check">
+                                                    <select name="importancia" class="form-control" id="importancia" required>
+                                                        <option value="">Seleccione</option>
+                                                    <?php foreach($importancias as $importancia){?>
+                                                        <option value="<?php echo $importancia['idimportancia']?>"><?php echo $importancia['importancia']?></option>
+                                                    <?php } ?>
                                                     </select>
-                                                </article>
+                                                </div>
                                             </section>
                                         </article>
-
+                                 <div>
+                            </div>
                                         <article class="align-right">
                                             <section class="display-inline">
                                                 <article>
@@ -175,27 +94,27 @@
                                                         <span>Tipo</span>
                                                     </div>
                                                 </article>
-                                                <article>
-                                                    <select id="ddltipo" class="select-style">
-                                                        <option value="seleccione">-- Seleccione --</option>
-                                                        <option value="incidencia">Incidencia</option>
-                                                        <option value="requerimiento">Requerimiento</option>
+                                                <div class="form-check">
+                                                    <select name="tipoticket" class="form-control" id="tipoticket" required>
+                                                    <option value="">Seleccione</option>
+                                                    <?php foreach($tipos as $tipo){?>
+                                                        <option value="<?php echo $tipo['idtipoticket']?>"><?php echo $tipo['tipoticket']?></option>
+                                                    <?php } ?>
                                                     </select>
-                                                </article>
+                                                </div>
                                             </section>
                                         </article>
                                     </section>
                                 </div>
 
-                                <textarea rows="5" name="comentarios" class="textarea-margin"></textarea>
+                                <textarea rows="5" name="descripcion" class="textarea-margin" required></textarea>
 
                                 <input class="input-file" type="file" name="file">
 
                                 <div class="center-button">
-                                    <button class="btn-gris" type="submit" onclick="cancelar(); return false;">Cancelar</button>
-                                    <button class="btn-gris" type="submit">Crear Ticket</button>
+                                    <button class="btn-gris" type="submit" onclick="cancelar(); return false;" id="cancelar">Cancelar</button>
+                                    <button class="btn-gris" type="submit" id="crear" name="crear">Crear Ticket</button>
                                 </div>
-                            </form>
                         </div>
                     </article>
                 </section>
@@ -203,7 +122,7 @@
         </article>
     </section>
 </div>
-
+</form>
 <script type="text/javascript">
     function cancelar() {
         $.ajax({
@@ -215,4 +134,26 @@
             }
         });
     }
+
+    $(document).ready(function() {
+        $("#formulario").submit(function(e){
+            crear(); 
+            e.preventDefault();
+        })
+    });
+
+    function crear() {
+        $.ajax({
+            method: "post",
+            url: "ajax/crearticket.php",
+            data: $("#formulario").serialize(),
+            dataType: "json",
+            success: function(data) {
+                cancelar();
+            }
+        });
+    }
 </script>
+<?php
+//include 'lib/footer.php';
+?>

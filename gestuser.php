@@ -1,3 +1,21 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors',1);
+
+// include 'bd/bd.php';
+// $bd=new bd();
+
+// $sql="SELECT * FROM empleado";
+// $resultado=$bd->consultar($sql);  
+// $usuarios=array();
+// while ($fila=$resultado->fetch_array(MYSQLI_ASSOC)) {
+//     array_push($usuarios,$fila);
+// }
+/* echo '<pre>'; como imprimir un arreglo 
+print_r($usuarios);
+echo '</pre>'; */
+include 'lib/head.php';
+?>
 <div>
     <section>
         <article class="section-content-page diametro">
@@ -15,8 +33,8 @@
                                 <tr>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Documento</th>
-                                    <th scope="col">Usuario</th>
-                                    <th scope="col">Email</th>
+                                    <th scope="col">correo</th>
+                                    <th scope="col">cargo</th>
                                     <th scope="col">Gestionar</th>
                                 </tr>
                             </thead>
@@ -38,30 +56,25 @@
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        lista('');
-        $("#search").keyup(function() {
-            let letra = $(this).val();
-            if (letra.length > 4) {
-                lista(letra);
-            } else if (letra.length === 0) {
-                lista("");
-            }
-        });
-    });
-
-    function lista(nombre) {
-        $.ajax({
-            method: "post",
-            url: "ajax/lista.php",
-            data: {
-                "nombreAjax": nombre
-            },
-            success: function(value) {
-                $("#viewlist").html(value);                
-            }
-        })
-    }
+     $(document).ready(function(){
+               lista('');
+               $("#search").keyup(function(){
+                   let letra=$(this).val();
+                   if(letra.length>4){
+                    lista(letra);
+                   }
+               });
+           });
+           function lista(nombre){
+               $.ajax({
+                   method: "post",
+                   url: "ajax/lista.php",
+                   data: {"nombreAjax":nombre},
+                   success: function(value){
+                    $("#viewlist").html(value);
+                   }
+               })
+           }
 
     function edit(value) {
         $.ajax({
@@ -91,3 +104,6 @@
         })
     }
 </script>
+<?php
+include 'lib/footer.php';
+?>

@@ -57,26 +57,6 @@
                                                     <span>Nombre</span>
                                                 </div>
                                             </article>
-                                            <article>
-                                                <div class="details-ticket-field">
-                                                    <span>Cesar Humberto Cañas</span>
-                                                </div>
-                                            </article>
-                                        </section>
-                                    </article>
-
-                                    <article class="align-right">
-                                        <section class="display-inline">
-                                            <article>
-                                                <div class="details-ticket-subtitle">
-                                                    <span>Sucursal</span>
-                                                </div>
-                                            </article>
-                                            <article>
-                                                <div class="details-ticket-field">
-                                                    <span>Sede Principal</span>
-                                                </div>
-                                            </article>
                                         </section>
                                     </article>
                                 </section>
@@ -84,51 +64,6 @@
 
                             <div>
                                 <section>
-                                    <article>
-                                        <section class="display-inline">
-                                            <article>
-                                                <div class="details-ticket-subtitle">
-                                                    <span>Documento</span>
-                                                </div>
-                                            </article>
-                                            <article>
-                                                <div class="details-ticket-field">
-                                                    <span>123456789</span>
-                                                </div>
-                                            </article>
-                                        </section>
-                                    </article>
-
-                                    <article class="align-right">
-                                        <section>
-                                            <article>
-                                                <section class="display-inline time-ticket">
-                                                    <article>
-                                                        <div class="details-ticket-subtitle">
-                                                            <span>Teléfono</span>
-                                                        </div>
-                                                    </article>
-                                                    <article>
-                                                        <div class="details-ticket-field">
-                                                            <span>8053302</span>
-                                                        </div>
-                                                    </article>
-                                                </section>
-                                            </article>
-                                            <article>
-                                                <section class="display-inline time-ticket">
-                                                    <article>
-                                                        <div class="details-ticket-subtitle">
-                                                            <span>Limite</span>
-                                                        </div>
-                                                    </article>
-                                                    <article>
-                                                        <div class="details-ticket-field">
-                                                            <span>72 H</span>
-                                                        </div>
-                                                    </article>
-                                                </section>
-                                            </article>
                                         </section>
                                     </article>
                                 </section>
@@ -136,33 +71,13 @@
 
                             <div>
                                 <section>
-                                    <article>
-                                        <section class="display-inline">
-                                            <article>
-                                                <div class="details-ticket-subtitle">
-                                                    <span>Correo</span>
-                                                </div>
-                                            </article>
-                                            <article>
-                                                <div class="details-ticket-field">
-                                                    <span>ccañas@helpdesk.com</span>
-                                                </div>
-                                            </article>
-                                        </section>
-                                    </article>
-
                                     <article class="align-right">
                                         <section>
                                             <article>
                                                 <section class="display-inline time-ticket">
                                                     <article>
                                                         <div class="details-ticket-subtitle">
-                                                            <span>Urgencia</span>
-                                                        </div>
-                                                    </article>
-                                                    <article>
-                                                        <div class="details-ticket-field">
-                                                            <span>Alta</span>
+                                                            <span>Importancia</span>
                                                         </div>
                                                     </article>
                                                 </section>
@@ -174,11 +89,6 @@
                                                             <span>Tipo</span>
                                                         </div>
                                                     </article>
-                                                    <article>
-                                                        <div class="details-ticket-field">
-                                                            <span>Incidencia</span>
-                                                        </div>
-                                                    </article>
                                                 </section>
                                             </article>
                                         </section>
@@ -186,24 +96,6 @@
                                 </section>
                             </div>
 
-                            <div>
-                                <section>
-                                    <article>
-                                        <section class="display-inline">
-                                            <article>
-                                                <div class="details-ticket-subtitle">
-                                                    <span>Direcci&oacute;n</span>
-                                                </div>
-                                            </article>
-                                            <article>
-                                                <div class="details-ticket-field">
-                                                    <span>Calle 26 #38-82 Ofic. 1205</span>
-                                                </div>
-                                            </article>
-                                        </section>
-                                    </article>
-                                </section>
-                            </div>
 
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs" role="tablist">

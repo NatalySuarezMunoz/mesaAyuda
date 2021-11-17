@@ -21,29 +21,6 @@
                                 <th scope="col">Gestionar</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>Brayan Villarraga</td>
-                                <td>1023950480</td>
-                                <td>bsvillarraga</td>
-                                <td>bsvilalrraga@helpdesk.com</td>
-                                <td><a><img src="../img/edit-icon.png" onclick="editTicket(1);return false;" /></a></td>
-                            </tr>
-                            <tr>
-                                <td>Brayan Villarraga</td>
-                                <td>1023950480</td>
-                                <td>bsvillarraga</td>
-                                <td>bsvilalrraga@helpdesk.com</td>
-                                <td><a><img src="../img/edit-icon.png" onclick="editTicket(2);return false;"/></a></td>
-                            </tr>
-                            <tr>
-                                <td>Brayan Villarraga</td>
-                                <td>1023950480</td>
-                                <td>bsvillarraga</td>
-                                <td>bsvilalrraga@helpdesk.com</td>
-                                <td><a><img src="../img/edit-icon.png" onclick="editTicket(3);return false;"/></a></td>
-                            </tr>
-                        </tbody>
                     </table>
                 </div>
 
@@ -55,26 +32,47 @@
     </section>
 </div>
 
-<script type="text/javascript">    
-    function editTicket(value) {
-        $.ajax({
-            method: "post",
-            url: "gestticket.php",
-            data: {
+<script type="text/javascript">   
+
+            $(document).ready(function(){
+               lista('');
+               $("#search").keyup(function(){
+                   let letra=$(this).val();
+                   if(letra.length>4){
+                    lista(letra);
+                   }
+               });
+           });
+           function lista(nombre){
+               $.ajax({
+                   method: "post",
+                   url: "ajax/lista.php",
+                   data: {"nombreAjax":nombre},
+                   success: function(value){
+                    $("#viewlist").html(value);
+                   }
+               })
+           }
+
+        function editTicket(value) {
+            $.ajax({
+                method: "post",
+                url: "gestticket.php",
+                data: {
                 "IDempleado": value
-            },
-            success: function(data) {
+                },
+                success: function(data) {
                 $("#content").html(data)
             }
         })
     }
 
-    function newTicket() {                   
-        $.ajax({
-            method: "post",
-            url: "newticket.php",
-            data: {},
-            success: function(data) {
+        function newTicket() {                   
+            $.ajax({
+                method: "post",
+                url: "newticket.php",
+                data: {},
+                success: function(data) {
                 $("#content").html(data)
             }
         })

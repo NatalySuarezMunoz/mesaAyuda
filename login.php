@@ -1,30 +1,24 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset='utf-8'>
-        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-        <title>Login</title>
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors',1);
 
-        <link rel='stylesheet' type='text/css' media='screen' href="../css/style.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    </head>
-    <body>
+include 'lib/head.php';
+?>
         <div class="content-login">
             <section class="login">
                 <article>
                     <div class="logo">
-                        <img src="../img/logo_login.png">
+                        <img src="img/logo_login.png">
                     </div>                    
                 </article>
     
                 <article>
                     <div class="form">
                         <div class="icon-computer">
-                            <img src="../img/img_computer_login.png"/>
+                            <img src="img/img_computer_login.png"/>
                         </div>
                         
-                        <div>
+                        <div class="container"> 
                             <form method="POST">
                                 <div class="input-group input-group-lg">
                                     <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-user"></i></span>
@@ -33,24 +27,65 @@
 
                                 <div class="input-group input-group-lg">
                                     <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-lock"></i></span>
-                                    <input type="password" name="password" class="form-control" placeholder="password" aria-describedby="sizing-addon1" required>
+                                    <input type="password" name="password" class="form-control" placeholder="password" id="password" aria-describedby="sizing-addon1" required>
                                 </div>
 
                                 <br>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <button class="btn-gris" type="submit" id="boton">Entrar</button>
+                                     </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="form-group">
+                                         <div class="alert alert-danger" id="alert">
 
-                                <button class="btn-gris" type="submit" onclick="pageRedirect();">Entrar</button>
+                                         </div>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>
                 </article>
             </section>
-        </div>
-        
-    </body>
+        </div>        
 
     <script type="text/javascript">
-        function pageRedirect() {
-            window.location.href = "index.php";
-        }
+        $(document).ready(function(){
+            $("#alert").hide();//hide oculta elementos html
+               $("#boton").click(function(){
+                  let user= $("#user").val();
+                  let password= $("#password").val();
+                  lista(user,password);
+                  return false;
+               });
+           });
+
+           function lista(user,password){
+               $.ajax({
+                   method: "post",
+                   url: "ajax/ingreso.php",
+                   data: {
+                       "userAjax":user,
+                       "passwordAjax":password
+                    },
+                   success: function(retornojson){
+                     if (retornojson.error == false){
+                        window.location.href = retornojson.accion;
+                        alert(retornojson);
+                     }
+                     else{
+                        $("#alert").text(retornojson.accion);
+                        $("#alert").show();
+                     }
+                   }
+               })
+           }
+        //    function pageRedirect() {
+        //     window.location.href = "index.php";
+        // }
     </script>
-</html>
+<?php
+include 'lib/footer.php';
+?>

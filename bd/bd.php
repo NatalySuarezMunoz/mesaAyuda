@@ -13,7 +13,6 @@ class bd {
             echo "error de conexion";
         }else{
            $this->conectar=$conectar;
-           echo "conectado";
         }
         
     }

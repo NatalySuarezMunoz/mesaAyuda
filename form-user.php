@@ -1,23 +1,7 @@
 <?php
-$IDempleado = $_POST['IDempleado'];
-
-error_reporting(E_ALL);
 ini_set('display_errors',1);
-
-include 'bd/bd.php';
-$bd=new bd();
-
-if (isset($_POST['ingresaruser'])){
-    echo 'usuario ingresado';
-    $nombre=$_POST['nombre'];
-    $documento=$_POST['document'];
-    $genero=$_POST['genero'];
-    $cargo=$_POST['cargo'];
-    //echo 
-    //exit;
-    echo $sql="INSERT INTO empleado (nombre,documento,IDcargo,genero) VALUES ('".$nombre."', '".$documento."', '".$cargo."', '".$genero."')";
-    $resultado=$bd->insertar($sql);
-}
+error_reporting(E_ALL);
+$IDempleado = $_POST['IDempleado'];
 
 ?>
 
@@ -25,12 +9,29 @@ if (isset($_POST['ingresaruser'])){
     $(document).ready(function() {
         if (<?php echo $IDempleado; ?> === 0) {
             $("#titulo").text("Nuevo Usuario");
-            $("#btnAccion").text("Crear Usuario");
+            $("#ingresaruser").text("Crear Usuario");
         } else {
             $("#titulo").text("Editar Usuario");
-            $("#btnAccion").text("Guardar");
+            $("#ingresaruser").text("Guardar");
         }
+
+        $("#formulario").submit(function(e){
+            crear(); 
+            e.preventDefault();
+        })
     });
+
+    function crear() {
+        $.ajax({
+            method: "post",
+            url: "ajax/adduser.php",
+            data: $("#formulario").serialize(),
+            dataType: "json",
+            success: function(data) {
+                cancelar();
+            }
+        });
+    }
 
     function cancelar() {
         $.ajax({
@@ -49,7 +50,7 @@ if (isset($_POST['ingresaruser'])){
         <article class="section-content-page diametro">
             <h3 id="titulo">Editar Usuario</h3>
 
-            <form method="POST">
+            <form method="POST" id="formulario" name="formulario">
                 <div class="user-form">
                     <section>
                         <article>
@@ -58,7 +59,7 @@ if (isset($_POST['ingresaruser'])){
                                     <article>
                                         <span>Nombre</span>
                                         <div>
-                                            <input name="nombre" type="text" class="form-control form-control-name" aria-describedby="sizing-addon1">
+                                            <input name="nombre" type="text" class="form-control form-control-name" aria-describedby="sizing-addon1" required>
                                         </div>
                                     </article>
                                 </section>
@@ -68,12 +69,12 @@ if (isset($_POST['ingresaruser'])){
                                 <section>
                                     <article>
                                         <span>Documento</span>
-                                        <input name="document" type="text" class="form-control" aria-describedby="sizing-addon1">
+                                        <input name="document" type="text" class="form-control" aria-describedby="sizing-addon1" required>
                                     </article>
                                     <article>
                                         <span>Genero</span>
 
-                                        <select name="genero" class="form-control">
+                                        <select name="genero" class="form-control" required>
                                             <option value="masculino">Masculino</option>
                                             <option value="femenino">Femenino</option>
                                         </select>
@@ -85,47 +86,23 @@ if (isset($_POST['ingresaruser'])){
                                 <div><span>Cargo</span></div>
 
                                 <div class="form-check">
-                                    <select name="cargo" class="form-control">
+                                    <select name="cargo" class="form-control" required>
                                         <option value="1">Desarrollador</option>
                                         <option value="2">Analista</option>
                                     </select>
                                 </div>
-
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault">
-                                    <label class="form-check-label" for="flexRadioDefault1">
-                                        Facturación
-                                    </label>
-                                </div>
-
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault">
-                                    <label class="form-check-label" for="flexRadioDefault1">
-                                        Contabilidad
-                                    </label>
-                                </div>
-
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault">
-                                    <label class="form-check-label" for="flexRadioDefault1">
-                                        Recursos Humanos
-                                    </label>
-                                </div>
+                          
                             </div>
                         </article>
 
                         <div class="vertical-line"></div>
 
                         <article>
-                            <div>
+                            <div>       
                                 <section>
                                     <article>
                                         <span>Correo Electronico</span>
-                                        <input name="email" type="email" class="form-control" aria-describedby="sizing-addon1">
-                                    </article>
-                                    <article>
-                                        <span>Usuario</span>
-                                        <label id="lblusuario" class="form-control">Textyo</label>
+                                        <input name="email" type="email" class="form-control" aria-describedby="sizing-addon1" required>
                                     </article>
                                 </section>
                             </div>
@@ -134,11 +111,11 @@ if (isset($_POST['ingresaruser'])){
                                 <section>
                                     <article>
                                         <span>Password</span>
-                                        <input name="password" type="password" class="form-control" aria-describedby="sizing-addon1">
+                                        <input name="password" type="password" class="form-control" aria-describedby="sizing-addon1" required>
                                     </article>
                                     <article>
                                         <span>Confirmar Password</span>
-                                        <input name="confirm_password" type="password" class="form-control" aria-describedby="sizing-addon1">
+                                        <input name="confirm_password" type="password" class="form-control" aria-describedby="sizing-addon1" required>
                                     </article>
                                 </section>
                             </div>
@@ -153,7 +130,7 @@ if (isset($_POST['ingresaruser'])){
 
                 <div class="new">
                     <button class="btn-gris" type="submit" onclick="cancelar(); return false;">Cancelar</button>
-                    <button id="btnAccion" class="btn-gris" type="submit" name="ingresaruser">Crear Usuario</button>
+                    <button id="ingresaruser" class="btn-gris" type="submit" name="ingresaruser">Crear Usuario</button>
                 </div>
             </form>
         </article>
