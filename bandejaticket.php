@@ -1,3 +1,27 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors',1);
+
+include 'bd/bd.php';
+$bd=new bd();
+
+$sql = 'SELECT 
+t.IDtiket AS ticket,
+t.fechacreacion AS fechainicio,
+e.IDempleado AS IDempleado,
+e.nombre AS empleado,
+et.estado AS estado
+FROM ticket t 
+INNER JOIN nota_ticket nt ON nt.IDticket = t.IDtiket
+INNER JOIN empleado e ON e.IDempleado = t.IDempleado
+INNER JOIN estado_ticket et ON et.IDestado_ticket = nt.IDestado
+ORDER BY t.fechacreacion DESC';
+$resultado = $bd->consultar($sql);  
+$tickets = array();
+while ($fila = $resultado->fetch_array(MYSQLI_ASSOC)) {
+    array_push($tickets,$fila);
+}
+?>
 <div>
     <section>
         <article class="section-content-page diametro">
@@ -16,11 +40,26 @@
                             <tr>
                                 <th scope="col">N&uacute;mero</th>
                                 <th scope="col">Fecha</th>
-                                <th scope="col">Cliente</th>
+                                <th scope="col">Empleado</th>
                                 <th scope="col">Estado</th>
                                 <th scope="col">Gestionar</th>
                             </tr>
                         </thead>
+                        <tbody id="viewlist">
+                            <?php
+                            foreach($tickets as $ticket){
+                            ?>
+                            <tr> 
+                                <td><?php echo $ticket['ticket']?></td>
+                                <td><?php echo $ticket['fechainicio']?></td>
+                                <td><?php echo $ticket['empleado']?></td>
+                                <td><?php echo $ticket['estado']?></td>
+                                <td><a onclick="edit(<?php echo $ticket['IDempleado']?>)"><img src="img/edit-icon.png"/></a></td> 
+                            </tr>
+                            <?php
+                            } 
+                            ?>
+                        </tbody>
                     </table>
                 </div>
 
@@ -34,38 +73,6 @@
 
 <script type="text/javascript">   
 
-            $(document).ready(function(){
-               lista('');
-               $("#search").keyup(function(){
-                   let letra=$(this).val();
-                   if(letra.length>4){
-                    lista(letra);
-                   }
-               });
-           });
-           function lista(nombre){
-               $.ajax({
-                   method: "post",
-                   url: "ajax/lista.php",
-                   data: {"nombreAjax":nombre},
-                   success: function(value){
-                    $("#viewlist").html(value);
-                   }
-               })
-           }
-
-        function editTicket(value) {
-            $.ajax({
-                method: "post",
-                url: "gestticket.php",
-                data: {
-                "IDempleado": value
-                },
-                success: function(data) {
-                $("#content").html(data)
-            }
-        })
-    }
 
         function newTicket() {                   
             $.ajax({
