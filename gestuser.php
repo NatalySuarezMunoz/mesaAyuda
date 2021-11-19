@@ -1,7 +1,9 @@
 <?php
+session_start();
 error_reporting(E_ALL);
 ini_set('display_errors',1);
 
+$marca = $_SESSION['nombre'];
 // include 'bd/bd.php';
 // $bd=new bd();
 
@@ -20,7 +22,13 @@ include 'lib/head.php';
     <section>
         <article class="section-content-page diametro">
             <div id="gestuser">
-                <h3>Gestionar Usuario</h3>
+            <div>
+                <section class="display-inline">
+                    <article>
+                        <h3>Bienvenido a HELP DESK <?php echo ucfirst(strtolower($marca)) ?> <br> Gestionar Usuario</h3>
+                    </article>
+                </section>
+            </Div>
                 <form>
                     <div class="search">
                         <input type="text" class="form-control" name="user" id="search" placeholder="Busque por nombre, documento, usuario" aria-describedby="sizing-addon1">

@@ -2,7 +2,8 @@
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors',1);
-echo $_SESSION['nombre'];
+
+$marca = $_SESSION['nombre'];
  include 'bd/bd.php';
  $bd=new bd();
 
@@ -27,12 +28,18 @@ $fechaInicio = date("Y-m-d H:i:s");
 <div>
     <section class="section-flex">
         <article class="section-content-page diametro">
-            <h3>Nuevo Ticket</h3>
 
             <div class="user-form">
                 <section>
                     <article>
                         <div class="body-details-ticket">
+                                <div>
+                                    <section class="display-inline">
+                                        <article>
+                                             <h3>Bienvenido/a a HELP DESK <?php echo $marca?> <br> Crear Nuevo Ticket</h3>
+                                        </article>
+                                    </section>
+                                </Div>
                                 <div>
                                     <section>
                                         <article>
@@ -75,6 +82,7 @@ $fechaInicio = date("Y-m-d H:i:s");
                                                         <span>Importancia</span>
                                                     </div>
                                                 </article>
+                                                <article>
                                                 <div class="form-check">
                                                     <select name="importancia" class="form-control" id="importancia" required>
                                                         <option value="">Seleccione</option>
@@ -83,17 +91,17 @@ $fechaInicio = date("Y-m-d H:i:s");
                                                     <?php } ?>
                                                     </select>
                                                 </div>
+                                                </article>
                                             </section>
                                         </article>
-                                 <div>
-                            </div>
-                                        <article class="align-right">
+                                        <article class="align-left>
                                             <section class="display-inline">
                                                 <article>
                                                     <div class="details-ticket-subtitle">
                                                         <span>Tipo</span>
                                                     </div>
                                                 </article>
+                                                <article>
                                                 <div class="form-check">
                                                     <select name="tipoticket" class="form-control" id="tipoticket" required>
                                                     <option value="">Seleccione</option>
@@ -102,6 +110,7 @@ $fechaInicio = date("Y-m-d H:i:s");
                                                     <?php } ?>
                                                     </select>
                                                 </div>
+                                                </article>
                                             </section>
                                         </article>
                                     </section>

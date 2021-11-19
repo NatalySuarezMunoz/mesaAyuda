@@ -1,37 +1,26 @@
 <?php
+session_start();
 error_reporting(E_ALL);
 ini_set('display_errors',1);
 
-include 'bd/bd.php';
-$bd=new bd();
+$marca = $_SESSION['nombre'];
 
-$sql = 'SELECT 
-t.IDtiket AS ticket,
-t.fechacreacion AS fechainicio,
-e.IDempleado AS IDempleado,
-e.nombre AS empleado,
-et.estado AS estado
-FROM ticket t 
-INNER JOIN nota_ticket nt ON nt.IDticket = t.IDtiket
-INNER JOIN empleado e ON e.IDempleado = t.IDempleado
-INNER JOIN estado_ticket et ON et.IDestado_ticket = nt.IDestado
-ORDER BY t.fechacreacion DESC';
-$resultado = $bd->consultar($sql);  
-$tickets = array();
-while ($fila = $resultado->fetch_array(MYSQLI_ASSOC)) {
-    array_push($tickets,$fila);
-}
 ?>
 <div>
     <section>
         <article class="section-content-page diametro">
-            <h3 class="titulo">Bandeja Ticket</h3>
+            <div>
+                <section class="display-inline">
+                    <article>
+                        <h3>Bienvenido a HELP DESK <?php echo ucfirst(strtolower($marca)) ?> <br> Bandeja Ticket</h3>
+                    </article>
+                </section>
+            </Div>
             <h4 class="subtitulo">Consulte el estado de los ticket que actualmente tiene en su bandeja</h4>
 
             <form>
                 <div class="search">
-                    <input type="text" class="form-control" name="casos" placeholder="Busque por n&uacute;mero o cliente" aria-describedby="sizing-addon1">
-                    <button class="btn-gris" type="submit">Buscar</button>
+                    <input type="text" class="form-control" name="casos" id="search" placeholder="Busque por n&uacute;mero o cliente" aria-describedby="sizing-addon1">
                 </div>
 
                 <div>
@@ -46,19 +35,7 @@ while ($fila = $resultado->fetch_array(MYSQLI_ASSOC)) {
                             </tr>
                         </thead>
                         <tbody id="viewlist">
-                            <?php
-                            foreach($tickets as $ticket){
-                            ?>
-                            <tr> 
-                                <td><?php echo $ticket['ticket']?></td>
-                                <td><?php echo $ticket['fechainicio']?></td>
-                                <td><?php echo $ticket['empleado']?></td>
-                                <td><?php echo $ticket['estado']?></td>
-                                <td><a onclick="edit(<?php echo $ticket['IDempleado']?>)"><img src="img/edit-icon.png"/></a></td> 
-                            </tr>
-                            <?php
-                            } 
-                            ?>
+
                         </tbody>
                     </table>
                 </div>
@@ -72,7 +49,23 @@ while ($fila = $resultado->fetch_array(MYSQLI_ASSOC)) {
 </div>
 
 <script type="text/javascript">   
-
+    $(document).ready(function(){
+        ticketlista('');
+        $("#search").keyup(function(){
+            let letra=$(this).val();
+            ticketlista(letra);
+        });
+    });
+        function ticketlista(ticket){
+            $.ajax({
+                method: "post",
+                url: "ajax/listarticket.php",
+                data: {"ticketAjax":ticket},
+                success: function(value){
+                    $("#viewlist").html(value);
+                }
+            })
+        }
 
         function newTicket() {                   
             $.ajax({
@@ -80,6 +73,19 @@ while ($fila = $resultado->fetch_array(MYSQLI_ASSOC)) {
                 url: "newticket.php",
                 data: {},
                 success: function(data) {
+                $("#content").html(data)
+                }
+            })
+        }
+
+    function gestionticket(value) {
+        $.ajax({
+            method: "post",
+            url: "gestticket.php",
+            data: {
+                "ajaxticket": value
+            },
+            success: function(data) {
                 $("#content").html(data)
             }
         })
